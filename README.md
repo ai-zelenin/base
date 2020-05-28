@@ -113,8 +113,8 @@ binaryName-environment.yml
 <https://github.com/uber-go/zap>  
 ##### DB drivers
 <https://github.com/jackc/pgx>  
-<https://github.com/ClickHouse/clickhouse-go> 
-<https://github.com/influxdata/influxdb>
+<https://github.com/ClickHouse/clickhouse-go>  
+<https://github.com/influxdata/influxdb>  
 ##### Metrics
 <https://github.com/uber-go/tally>
 ##### Migrations

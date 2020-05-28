@@ -1,0 +1,95 @@
+---
+import_file_path: ""
+
+validator_config:
+    host: "azcorp.cloud"
+    path: "/ok"
+    timeout: 10s
+    number_of_requests: 5
+    threads: 50
+
+source_configs:
+    -   url: "https://free.proxy-sale.com/"
+        depth: 20000
+        threads: 4
+        random_delay: 0
+        delay: 0
+        follow_regexp: ".*proxy_page.*"
+        skip: false
+        selectors:
+            -   target: "Host"
+                selector: ".main__table-wrap tbody > tr > td.ip > a"
+
+            -   target: "Port"
+                selector: ".main__table-wrap tbody > tr > td:nth-child(2)"
+
+            -   target: "Protocol"
+                selector: ".main__table-wrap tbody > tr > td:nth-child(4)"
+                enable_validation: true
+
+    -   url: "https://free-proxy-list.net/"
+        depth: 20000
+        threads: 4
+        random_delay: 0
+        delay: 0
+        follow_regexp: "^no_follow$"
+        skip: true
+        selectors:
+            -   target: "Host"
+                selector: "#proxylisttable tbody > tr > td:nth-child(1)"
+
+            -   target: "Port"
+                selector: "#proxylisttable tbody > tr > td:nth-child(2)"
+
+            -   target: "Protocol"
+                selector: "#proxylisttable tbody > tr > td.hx"
+                mapping:
+                    "yes": "https"
+                    "no": "http"
+                enable_validation: true
+
+    -   url: "https://www.socks-proxy.net/"
+        depth: 20000
+        threads: 4
+        random_delay: 0
+        delay: 0
+        follow_regexp: "^no_follow$"
+        skip: true
+        selectors:
+            -   target: "Host"
+                selector: "#proxylisttable tbody > tr > td:nth-child(1)"
+
+            -   target: "Port"
+                selector: "#proxylisttable tbody > tr > td:nth-child(2)"
+
+            -   target: "Protocol"
+                selector: "#proxylisttable tbody > tr > td:nth-child(5)"
+                enable_validation: true
+
+    -   url: "http://www.nimadaili.com/http/1"
+        depth: 20000
+        threads: 4
+        random_delay: 0
+        delay: 0
+        follow_regexp: "http/[0-9]{1,5}"
+        skip: true
+        selectors:
+            -   target: "Address"
+                selector: "table tbody > tr > td:nth-child(1)"
+
+            -   target: "Protocol"
+                selector: "table tbody > tr > td:nth-child(2)"
+
+    -   url: "http://www.xiladaili.com/http/1"
+        depth: 20000
+        threads: 4
+        random_delay: 0
+        delay: 0
+        follow_regexp: "http/[0-9]{1,5}"
+        skip: true
+        selectors:
+            -   target: "Address"
+                selector: "table tbody > tr > td:nth-child(1)"
+
+            -   target: "Protocol"
+                selector: "table tbody > tr > td:nth-child(2)"
